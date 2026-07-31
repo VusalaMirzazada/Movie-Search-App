@@ -1,14 +1,18 @@
-function MovieCard() {
+function MovieCard({ movie }) {
   return (
     <div>
       <img
-        src="https://via.placeholder.com/200x300"
-        alt="Movie Poster"
+        src={
+          movie.Poster !== "N/A"
+            ? movie.Poster
+            : "https://via.placeholder.com/200x300"
+        }
+        alt={movie.Title}
       />
 
-      <h3>Movie Title</h3>
+      <h3>{movie.Title}</h3>
 
-      <p>2023</p>
+      <p>{movie.Year}</p>
     </div>
   );
 }
