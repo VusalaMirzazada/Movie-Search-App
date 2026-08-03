@@ -1,7 +1,9 @@
 function MovieCard({ movie }) {
   return (
-    <div>
+    <div className="movie-card">
+      <div className="movie-card__poster-wrap">
       <img
+      className="movie-card__poster"
         src={
           movie.Poster !== "N/A"
             ? movie.Poster
@@ -9,12 +11,10 @@ function MovieCard({ movie }) {
         }
         alt={movie.Title}
       />
-
-      <h3>{movie.Title}</h3>
-
-      <p>{movie.Year}</p>
+      <span className="movie-card__year">{movie.Year}</span>
+      </div>
+      <h3 className="movie-card__title">{movie.Title}</h3>
     </div>
   );
 }
-
 export default MovieCard;
