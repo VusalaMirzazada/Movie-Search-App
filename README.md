@@ -1,16 +1,20 @@
-# React + Vite
+# Movie Search App
+OMDb açıq REST API-yə qoşulan, axtarış, debounce, loading/error/empty state-lər və pagination olan React tətbiqi.
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Layihənin qısa təsviri
+React (Vite) ilə yaradılmış film axtarış tətbiqi. İstifadəçi axtarış qutusuna film adı yazır, tətbiq OMDb API-dən uyğun nəticələri çəkib kartlar şəklində göstərir. Axtarışda debounce tətbiq olunub ki, hər hərf üçün deyil, istifadəçi yazmağı dayandırdıqdan sonra sorğu getsin.
 
-Currently, two official plugins are available:
+## İstifadə olunan texnologiyalar
+- React 18 (Vite ilə qurulub)
+- OMDb REST API (fetch)
+- React Hooks (useState, useEffect, custom hook: useDebounce)
+- CSS3 (responsiv dizayn)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Xüsusiyyətlər
+- OMDb API-dən `useEffect` vasitəsilə real-time film axtarışı
+- Axtarışda debounce (hər hərfdə deyil, 500ms sükutdan sonra sorğu)
+- Loading / error / boş nəticə / hələ axtarış edilməyib — 4 ayrı state ayrıca göstərilir
+- Pagination (Previous/Next, ümumi səhifə sayı OMDb-nin `totalResults`-una görə hesablanır)
+- Custom hook (`useDebounce`) ilə kod təşkili
+- API key təhlükəsizlik üçün `.env` faylında saxlanılır, GitHub-a push olunmur
+- Komponent əsaslı struktur: SearchBar, ResultsList, MovieCard, Pagination
