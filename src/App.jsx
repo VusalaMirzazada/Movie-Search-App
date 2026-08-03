@@ -28,6 +28,8 @@ useEffect(() => {
     return;
   }
 
+  const controller = new AbortController();
+
   async function fetchMovies() {
     try {
       setLoading(true);
@@ -50,11 +52,15 @@ useEffect(() => {
     } catch (err) {
       setError("Xəta baş verdi.");
     } finally {
+      if (!controller.signal.aborted) {
       setLoading(false);
     }
   }
+}
 
   fetchMovies();
+
+  return () => controller.abort();
 }, [debouncedSearchTerm, page]);
 
    return (
