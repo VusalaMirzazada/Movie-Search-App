@@ -11,7 +11,7 @@ function App() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
-    
+
     const debouncedSearchTerm = useDebounce(searchTerm, 500);
     
 useEffect(() => {
@@ -53,7 +53,12 @@ useEffect(() => {
 
       <SearchBar value={searchTerm} onChange={setSearchTerm} />
 
-      <ResultsList movies={movies} />
+      <ResultsList movies={movies} 
+      loading={loading}
+      error={error}
+      searchTerm={debouncedSearchTerm}
+
+      />
 
       <Pagination />
     </div>
