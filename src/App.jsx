@@ -11,12 +11,20 @@ function App() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [page, setPage] = useState(1);
+    const [totalResults, setTotalResults] = useState(0);
 
     const debouncedSearchTerm = useDebounce(searchTerm, 500);
-    
+
+useEffect(() => {
+  setPage(1);
+}, [debouncedSearchTerm]);
+
+
 useEffect(() => {
   if (!debouncedSearchTerm) {
     setMovies([]);
+    setTotalResults(0);
     return;
   }
 
@@ -26,16 +34,18 @@ useEffect(() => {
       setError("");
 
       const response = await fetch(
-        `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_OMDB_API_KEY}&s=${debouncedSearchTerm}`
+      `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_OMDB_API_KEY}&s=${debouncedSearchTerm}&page=${page}`
       );
 
       const data = await response.json();
 
       if (data.Response === "False") {
         setMovies([]);
+        setTotalResults(0);
         setError(data.Error);
       } else {
         setMovies(data.Search || []);
+        setTotalResults(Number(data.totalResults) || 0);
       }
     } catch (err) {
       setError("Xəta baş verdi.");
@@ -45,7 +55,7 @@ useEffect(() => {
   }
 
   fetchMovies();
-}, [debouncedSearchTerm]);
+}, [debouncedSearchTerm, page]);
 
    return (
     <div className="app">
@@ -60,7 +70,11 @@ useEffect(() => {
 
       />
 
-      <Pagination />
+      <Pagination 
+      currentPage={page}
+      totalResults={totalResults}
+       onPageChange={setPage} 
+       />
     </div>
    );
 }
