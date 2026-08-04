@@ -18,3 +18,12 @@ React (Vite) ilə yaradılmış film axtarış tətbiqi. İstifadəçi axtarış
 - Custom hook (`useDebounce`) ilə kod təşkili
 - API key təhlükəsizlik üçün `.env` faylında saxlanılır, GitHub-a push olunmur
 - Komponent əsaslı struktur: SearchBar, ResultsList, MovieCard, Pagination
+
+## Ekran görüntüləri
+<img width="900" alt="Ana ekranın görünüşü" src="https://github.com/user-attachments/assets/0fcd514e-76f8-48f5-987b-dfdd21a4fb2e" />
+<img width="1000" alt="Axtarış nəticələri hissəsi" src="https://github.com/user-attachments/assets/d1eafc8c-0344-4edf-9d94-8451b06b6f61" />
+<img width="1000" alt="Paginiton hissəsi" src="https://github.com/user-attachments/assets/ad995a73-5939-4b56-bfb0-941907f3aea8" />
+<img width="800" alt="Mobil görünüş" src="https://github.com/user-attachments/assets/4517db4c-286a-4aa2-9931-9bb8c825ed22" />
+
+## Live Demo
+https://movie-search-app-kappa-peach.vercel.app
